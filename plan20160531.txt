@@ -1,1 +1,26 @@
+PLAN:
 
+Which jobs are most crucial?
+ - setting up the structure of the code-- how the diff classes interact and which classes there are
+ - developing algorithms 
+ - deciding at what stage the project could be submitted
+
+Which components constitute core functionality vs extras?
+ - core functionality: bugs appear, walk around obstacles, user can place obstacles, bugs eat up food
+ - extras: store selection, setting up your own anti-bug bug army (?)
+
+Which components are prerequisites for others?
+ - bugs must be spawned for them to walk appropriately around obstacles
+ - store/placement system must be set up for user to place obstacles
+
+Which tasks can be delegated, and which must be collaboratively tackled?
+ - developing specific algorithms can be delegated
+ - everything else must be collaboratively tackled bc large portions of the project will be affected
+
+What is the timeline, and how does it accommodate setbacks, course changes?
+ - timeline: 
+  6/1: get greenlighted; detailed features planning
+  6/5: set up structure and develop algos
+  6/7: core fxnality
+  6/9: extras
+  6/10: complete

@@ -1,4 +1,21 @@
-PLAN:
+Main idea for the project:
+
+Have an interface in Processing with a screen of the actual game.
+This screen will consist of:
+  - Obstacle store on right side
+  - Construction queue on left side
+  - Game in middle
+  - Stats on the bottom (Lvl, Pests Killed, $$, etc.)
+  
+We will implement pest movement with a recursive algorithm similar to KnightTour:
+  - Pests' next move will be a random location around it. If it is an obstacle/wall, the algorithm will backtrack and check the next available spot for the pest. This will continue until a valid move is found for the pest so that it can be blocked by walls/obstacles.
+  - The pests will be able to slowly (but surely) break down the obstacles little by little so that the player cannot just create a wall of obstacles around the food storage and expect to stall the game out.
+  
+The current objective of the game is to survive as many levels/until the last level while you protect a "Food storage" type of object from being completely eaten away by the pests. If it is completely eaten, then the player will lose.
+
+The player will be able to click pests to damage/kill them to try and protect their food storage. 
+
+========================================================================================================================
 
 Which jobs are most crucial?
  - setting up the structure of the code-- how the diff classes interact and which classes there are

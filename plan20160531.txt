@@ -24,3 +24,4 @@ What is the timeline, and how does it accommodate setbacks, course changes?
   6/7: core fxnality
   6/9: extras
   6/10: complete
+ - accomodates setbacks by giving extra days to push off extras if there isn't time

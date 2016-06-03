@@ -1,0 +1,76 @@
+Priority key:
+  !! = NECESITY
+  ! = Medium Priority
+  ~ = Low Priority
+
+====================================================================================================
+
+Global variables:
+  - boolean gameOver !!
+  - int Money $$$ !!
+  - queue ConstructionQueue !!
+  - int Level !!
+  - int Pests spawned (Might use this for pests per level) !
+  - int Pests eliminated !
+  - boolean/int Powerup/Pesticide (Depending on if we have diff powerups) !
+  - int time (Record time/level AND/OR duration of powerups) !
+
+====================================================================================================
+
+Implement different classes of:
+  - Pest/Bug:
+    - HP !!
+    - xcor !!
+    - ycor !!
+    - state (alive/dead, similar to ball) !!
+    - difficulty (HP may be based on this) !
+    - Subclasses? ~
+    
+  - Storage:
+    - Amount of Food (HP) !!
+    - Size (Correlates with food) !
+    - xcor !!
+    - ycor !!
+    
+  - Obstacle (Stationary object that player can purchase & place):
+    - HP !!
+    - xcor !!
+    - ycor !!
+    - state (constructing/alive/dead) !!
+    - Subclasses? ! :
+      - Wall:
+        - Size (length/width based on HP) !!
+        - Subclasses:
+          - Arc !
+          - Ellipse !!
+          - Line ? ~
+          - Quadrilateral !
+          - Rectangle !!
+          - Triangle !!
+      - Bomb:
+        - Tick (Countdown to 0 -> Explosion upon death) !!
+        - Radius of explosion !!
+        
+  - Anti-pests ~
+
+====================================================================================================
+
+Shop interface (How should we create this?):
+  - Purchase obstacles !!
+  - Purchase powerup/pesticide !
+  - Subtract money from player !!
+  - Cancel button? !
+  - Unlock new items depending on level (Might not matter because of money gain anyway) ~
+
+====================================================================================================
+
+Interactions:
+  - Create bugs' movement (Tries to go towards food storage unless obstacle in way, and use Knights Tour algo to change direction
+  - Click bug -> Bug gets damaged
+  - Bug is killed -> Player gains money depending on bug's difficulty
+  - Only a set # of bugs allowed to spawn per level
+  - After set # of bugs have spawned, after they are killed -> Wait 10-15s -> Next level
+  - If food storage is dead -> Game over
+  - Click item in shop with money >= price -> Choose spot to place obstacle -> Enter into queue
+  - Clicking bomb -> Bomb instantly goes to top of queue to be placed OR bomb is automatically placed
+  - Clicking pesticide -> Powers clicks up for certain amount of time

@@ -1,5 +1,5 @@
 Priority key:
-  !! = NECESITY
+  !! = NECESSITY
   ! = Medium Priority
   ~ = Low Priority
 

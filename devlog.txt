@@ -9,12 +9,19 @@ Project -- Pest Decimation
     \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/ 
 ==============================================================
 
-TEMPLATE FOR DEVLOG:
 
-Date: yyyy-mm-dd
+Date: 2016-06-03
 --------------------------------------------------------------
 
-User:
-Changes:
+User: Leo (BursTheGravity)
+Changes: added to-do.txt (now renamed to game_plan.txt)
+
+==============================================================
+
+Date: 2016-06-06
+--------------------------------------------------------------
+
+User: Team WoeBeGone
+Changes: added skeleton files in folder Game, timeline.txt
 
 ==============================================================

@@ -7,8 +7,8 @@ public abstract class Pest {
 
 	public Pest() {
 		HP = 1;
-		xcor = random(500);
-		ycor = random(500);
+		xcor = (int) random(500);
+		ycor = (int) random(500);
 		diff = 1;
     speed = 2;
 		state = ALIVE;

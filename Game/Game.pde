@@ -61,7 +61,7 @@ void draw() {
 
 void mouseClicked(){
      if(!_startGame){
-       if ((mouseX> 188)&& (mouseX < 313)&&(mouseY>225)&&(mouseY<275)){
+       if ((mouseX> 250)&& (mouseX < 375)&&(mouseY>250)&&(mouseY<300)){
         _startGame=true;
       }
      }

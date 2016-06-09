@@ -25,3 +25,11 @@ User: Team WoeBeGone
 Changes: added skeleton files in folder Game, timeline.txt
 
 ==============================================================
+
+Date: 2016-06-09
+--------------------------------------------------------------
+
+User: Henry (yhzhan)
+Changes: implemented visual layout and player interface 
+
+==============================================================

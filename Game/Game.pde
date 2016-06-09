@@ -5,7 +5,17 @@ int _level;
 
 
 void setup() {
-  size(500,500);
+  size(650,600);
+  background(255);
+  stroke(153);//to avoid border intersection
+  fill(153); //makes it grey
+  
+  rect(75, 50, 50, 500);
+  rect(525,50, 50, 500);
+  rect(75,50, 500, 50);
+  rect(75,500, 500, 50);
+  //creating visual spawn range
+  
   _gameOver = false;
   _money = 0;
   _level = 0;
@@ -20,7 +30,7 @@ void setup() {
 }
 
 void draw() {
-  background(0,0,0); //refresh background;
+  //background(0,0,0); //refresh background;
   //show bugs
   //have them move, etc.
 }

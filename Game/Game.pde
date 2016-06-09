@@ -17,7 +17,7 @@ void setup() {
   rect(75,50, 500, 50);
   rect(75,500, 500, 50); 
   //creating visual spawn range 
-  _startGame=true;
+  _startGame=false;
   _gameOver = false;
   _money = 0;
   _level = 0;
@@ -32,7 +32,7 @@ void setup() {
 }
 
 void draw() {
-  if (_startGame){
+  if (!_startGame){
     //==============================
     fill(255);
     textSize(40);
@@ -47,16 +47,26 @@ void draw() {
     //setting up initial screen
     //==============================
     
-   
-    
-  }
   
-  textSize(30);
-  text("LVL: "+_level, 275, 35); 
-  //background(0,0,0); //refresh background;
-  //show bugs
-  //have them move, etc.
+    textSize(30);
+    text("LVL: "+_level, 275, 35); 
+    //background(0,0,0); //refresh background;
+    //show bugs
+    //have them move, etc.
+  }
+  else{
+    clear();
+  }
 }
+
+void mouseClicked(){
+     if(!_startGame){
+       if ((mouseX> 188)&& (mouseX < 313)&&(mouseY>225)&&(mouseY<275)){
+        _startGame=true;
+      }
+     }
+}
+       
 
 void mousePressed() {
   //if same xcor and ycor as bug, decrease hp

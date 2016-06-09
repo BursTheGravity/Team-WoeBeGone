@@ -2,6 +2,7 @@ boolean _gameOver;
 boolean _startGame;
 int _money;
 int _level;
+int _score;
 Storage _storage;
 //queue ConstructionQueue;
 
@@ -22,6 +23,7 @@ void setup() {
   _gameOver = false;
   _money = 0;
   _level = 0;
+  _score = 0;
   _storage=new Storage(25);
   /*BUG SPAWN RANGE: --- ***we're just doing the bug screen without side panes first***
   X-cor: randomly choose an x-cor from 75 to 525...
@@ -66,6 +68,8 @@ void draw() {
       rect(75,500, 500, 50);
       textSize(30);
       text("LVL: "+_level, 275, 35);
+      text("$"+_money, 125, 35);
+      text("Score: "+_score, 425, 35);
       ellipseMode(CENTER);
       ellipse(313, 300, _storage.size*2, _storage.size*2);
       //begin to spawn bugs

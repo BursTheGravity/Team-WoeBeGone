@@ -1,21 +1,23 @@
 boolean _gameOver;
+boolean _startGame;
 int _money;
 int _level;
 //queue ConstructionQueue;
 
 
 void setup() {
+  //textSize(32);
+  //text("PEST DECIMATION", 250, 100); 
   size(650,600);
-  background(255);
-  stroke(153);//to avoid border intersection
-  fill(153); //makes it grey
-  
+  background(0);
+  stroke(255);//to avoid border intersection
+  fill(255); //makes it grey
   rect(75, 50, 50, 500);
   rect(525,50, 50, 500);
   rect(75,50, 500, 50);
-  rect(75,500, 500, 50);
-  //creating visual spawn range
-  
+  rect(75,500, 500, 50); 
+  //creating visual spawn range 
+  _startGame=true;
   _gameOver = false;
   _money = 0;
   _level = 0;
@@ -30,6 +32,27 @@ void setup() {
 }
 
 void draw() {
+  if (_startGame){
+    //==============================
+    fill(255);
+    textSize(40);
+    text("PEST DECIMATION ", 150, 200);
+    rect(250, 250, 125, 50);
+    fill(0);
+    text ("PLAY", 266, 289);
+    fill(255);
+    rect(250, 350, 125, 50);
+    fill(0);
+    text ("HELP", 266, 389);
+    //setting up initial screen
+    //==============================
+    
+   
+    
+  }
+  
+  textSize(30);
+  text("LVL: "+_level, 275, 35); 
   //background(0,0,0); //refresh background;
   //show bugs
   //have them move, etc.

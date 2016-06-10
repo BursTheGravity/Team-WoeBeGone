@@ -1,9 +1,11 @@
 boolean _gameOver;
 boolean _startGame;
+boolean _helpScreen;
 int _money;
 int _level;
 int _score;
 Storage _storage;
+Obstacle _currObstacle;
 //queue ConstructionQueue;
 
 
@@ -78,16 +80,30 @@ void draw() {
   }
 }
 
-void mouseClicked(){
-     if(!_startGame){
+void mousePressed(){
+     if( !_startGame && !_helpScreen){
+       //Home Screen
        if ((mouseX> 250)&& (mouseX < 375)&&(mouseY>250)&&(mouseY<300)){
-        _startGame=true;
+          _startGame=true;
         //starts game when user clicks on play
+        }
+        if ((mouseX> 250)&& (mouseX < 375)&&(mouseY>350)&&(mouseY<400)){
+        _helpScreen=true;
+        //prompts help screen
+        }
+      else if ( _helpScreen ) {
+        //Display help screen
+        //Create a button somewhere to go BACK
+        //if click button -> _helpScreen = false;
+      }
+      else if ( _startGame && !_gameOver ) {
+        //All functions using a mouse click within the game will go here:
+        /*
+        1. Killing Pests
+        2. Buying Obstacles
+        3. Setting down obstacles
+        4. Clicking powerup/weapon
+        */
       }
      }
-}
-       
-
-void mousePressed() {
-  //if same xcor and ycor as bug, decrease hp
 }

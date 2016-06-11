@@ -1,3 +1,3 @@
-public interface Processable{
+public interface Processable {
   public void process();
 }

@@ -40,7 +40,7 @@ void setup() {
   _score = 0;
   _storage = new Storage(25);
   _obstacles = new ArrayList<Obstacle>();
-  _hint="Bruh";
+  _hint="Good Luck";
   _processor=new PriorityQueue();
   
   /*BUG SPAWN RANGE: --- ***we're just doing the bug screen without side panes first***

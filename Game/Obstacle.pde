@@ -35,4 +35,5 @@ public class Obstacle extends Purchasable implements Processable{
     state=CONSTRUCTING;
     delay(3);
     state=ALIVE;
+  }
 }

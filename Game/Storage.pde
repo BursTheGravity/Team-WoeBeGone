@@ -1,16 +1,16 @@
 public class Storage {
 
-	private int HP, xcor, ycor, size;
+  private int HP, xcor, ycor, size;
   //add state?
 
-	public Storage() {
-		HP = 100;
+  public Storage() {
+    HP = 100;
     xcor = width / 2;
     ycor = height / 2;
-		//xcor = 300;
-		//ycor = 275;
-		size = HP;
-	}
+    //xcor = 300;
+    //ycor = 275;
+    size = HP;
+  }
 
   public Storage(int hp) {
     HP = hp;
@@ -21,25 +21,20 @@ public class Storage {
     size = HP;
   }
 
-	//Accessors
-	public int getHP() { return HP; }
-	public int getX() { return xcor; }
-	public int getY() { return ycor; }
-	public int getSize() { return size; }
+  //Accessors
+  public int getHP() { return HP; }
+  public int getX() { return xcor; }
+  public int getY() { return ycor; }
+  public int getSize() { return size; }
 
-	//Mutators
-	public void setHP ( int i ) { HP = i; }
-	public void setX ( int i ) { xcor = i; }
-	public void setY ( int i ) { ycor = i; }
-	public void setSize ( int i ) { size = i; }
+  //Mutators
+  public void setHP ( int i ) { HP = i; }
+  public void setX ( int i ) { xcor = i; }
+  public void setY ( int i ) { ycor = i; }
+  public void setSize ( int i ) { size = i; }
 
 
 
-	public boolean isEmpty() { return HP > 0; }
-	public void lowerHP() { HP -= 1; }
-
-  public void show() { //draw()?
-   //draws storage according to HP
-  }
-
+  public boolean isEmpty() { return HP > 0; }
+  public void lowerHP() { HP -= 1; }
 }

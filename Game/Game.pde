@@ -3,12 +3,13 @@
 //Final Project -- Pest Decimation
 //Due Date: 2016-06-13
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
 //ints for _screen
 final static int HOME = 0;
 final static int HELP = 1;
 final static int PLAY = 2;
 final static int END = 3;
-
 
 boolean _gameOver;
 boolean _startGame;
@@ -20,6 +21,7 @@ int _score;
 Storage _storage;
 Obstacle _currObstacle;
 ArrayList<Obstacle> _obstacles;
+PriorityQueue _processor;
 String _hint;
 //queue ConstructionQueue;
 
@@ -39,6 +41,7 @@ void setup() {
   _storage = new Storage(25);
   _obstacles = new ArrayList<Obstacle>();
   _hint="Bruh";
+  _processor=new PriorityQueue();
   
   /*BUG SPAWN RANGE: --- ***we're just doing the bug screen without side panes first***
   X-cor: randomly choose an x-cor from 75 to 525...

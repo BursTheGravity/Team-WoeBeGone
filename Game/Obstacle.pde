@@ -1,10 +1,11 @@
-public class Obstacle {
-
+public class Obstacle extends Purchasable implements Processable{
+  
+  final static int INQUEUE=3;
 	final static int ALIVE = 0;
 	final static int CONSTRUCTING = 1;
 	final static int DEAD = 2;
 
-	protected int HP, xcor, ycor, _width, _height, state, cost;
+	protected int HP, xcor, ycor, _width, _height, state;
 
   public Obstacle(int x, int y, int w, int h) {
     HP = 50;
@@ -29,5 +30,9 @@ public class Obstacle {
 	public void setY ( int i ) { ycor = i; }
 	public void setState ( int i ) { state = i; }
   public void setCost ( int i ) { cost = i; }
-
+  
+  public void process(){
+    state=CONSTRUCTING;
+    delay(3);
+    state=ALIVE;
 }

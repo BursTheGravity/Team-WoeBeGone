@@ -181,15 +181,17 @@ void mousePressed() {
          _holdingObstacle = true;
        }
        else {
-         //not enuff $$ text
+         //not enuff $$ text at the hint line on the bottom
        }
      }
      //3. Setting down obstacles
      else if ( _holdingObstacle ) {
-       fill(255);
-       Obstacle o = new Obstacle(mouseX - 50, mouseY - 25, 100, 50);
-       _obstacles.add(o);
-       _holdingObstacle = false;
+       if ((mouseX>125)&& (mouseX<525)&&(mouseY>100)&&(mouseY<500)){
+         fill(255);
+         Obstacle o = new Obstacle(mouseX - 50, mouseY - 25, 100, 50);
+         _obstacles.add(o);
+         _holdingObstacle = false;
+       }
      }
      //4. Clicking powerup/weapon
      

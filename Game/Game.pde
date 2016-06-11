@@ -9,6 +9,7 @@ final static int HELP = 1;
 final static int PLAY = 2;
 final static int END = 3;
 
+
 boolean _gameOver;
 boolean _startGame;
 boolean _holdingObstacle;
@@ -19,11 +20,12 @@ int _score;
 Storage _storage;
 Obstacle _currObstacle;
 ArrayList<Obstacle> _obstacles;
+String _hint;
 //queue ConstructionQueue;
 
 void setup() {
   
-  size(650,600);
+  size(650,800);
   homeScreen();
   
   //VARIABLES
@@ -36,6 +38,7 @@ void setup() {
   _score = 0;
   _storage = new Storage(25);
   _obstacles = new ArrayList<Obstacle>();
+  _hint="Bruh";
   
   /*BUG SPAWN RANGE: --- ***we're just doing the bug screen without side panes first***
   X-cor: randomly choose an x-cor from 75 to 525...
@@ -70,6 +73,8 @@ void draw() {
   else if ( _screen == END ) {
     _gameOver = true;
   }
+  textSize(32);
+  text(_hint, 300, 650);
   
 }
 
@@ -143,7 +148,7 @@ void gameScreen() {
   //Temp Shop
   stroke(150);
   fill(200);
-  rect(0,0, 100, 100);
+  rect(0,0, 25, 25);
   
   fill(255);
 }

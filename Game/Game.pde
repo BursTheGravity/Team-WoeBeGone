@@ -33,7 +33,7 @@ void setup() {
   _gameOver = false;
   _holdingObstacle = false;
   _screen = HOME;
-  _money = 10000;
+  _money = 10;
   _level = 0;
   _score = 0;
   _storage = new Storage(25);
@@ -74,6 +74,7 @@ void draw() {
     _gameOver = true;
   }
   textSize(32);
+  textAlign(CENTER);
   text(_hint, 300, 650);
   
 }
@@ -91,17 +92,17 @@ void homeScreen() {
   textSize(40);
   
   fill(255);
-  text("PEST DECIMATION ", 150, 200);
+  text("PEST DECIMATION ", 330, 200);
   
   fill(255);
   rect(250, 250, 125, 50);
   fill(0);
-  text ("PLAY", 266, 289);
+  text ("PLAY", 310, 289);
   
   fill(255);
   rect(250, 350, 125, 50);
   fill(0);
-  text ("HELP", 266, 389);
+  text ("HELP", 310, 389);
   
   //Credits ?? Later
 }
@@ -111,6 +112,7 @@ void helpScreen() {
   clear();
   textSize(30);
   fill(255);
+  textAlign(CENTER);
   text("UNDER CONSTRUCTION", 150, 300);
 }
 
@@ -148,7 +150,7 @@ void gameScreen() {
   //Temp Shop
   stroke(150);
   fill(200);
-  rect(0,0, 25, 25);
+  rect(25,100, 25, 25);
   
   fill(255);
 }
@@ -186,7 +188,7 @@ void mousePressed() {
          _holdingObstacle = true;
        }
        else {
-         //not enuff $$ text at the hint line on the bottom
+         _hint="NOT ENOUGH MONEY!";
        }
      }
      //3. Setting down obstacles

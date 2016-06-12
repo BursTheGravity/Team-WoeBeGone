@@ -158,7 +158,7 @@ void gameScreen() {
   fill(150);
   rect(0, 560, 650, 65);
   fill(255);
-  textSize(32);
+  textSize(20);
   text(_hint, 325, 600);
   
   //PRINT STORAGE
@@ -486,7 +486,7 @@ void mousePressed() {
       }
       
       else {
-        _hint="NOT ENOUGH MONEY!";
+        _hint="NOT ENOUGH MONEY (or you're not clicking on a store option)";
       }
     }
     //3. Setting down obstacles

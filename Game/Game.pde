@@ -18,6 +18,7 @@ color red = color( 255,0,0 );
 boolean _gameOver;
 boolean _startGame;
 boolean _holdingObstacle;
+boolean _nextGame;
 int _screen;
 int _money;
 int _level;
@@ -52,23 +53,10 @@ void setup() {
   _pests = new ArrayList<Pest>();
   textAlign(CENTER);
 
-  /*BUG SPAWN RANGE: --- ***we're just doing the bug screen without side panes first***
-   X-cor: randomly choose an x-cor from 75 to 525...
-   if <100 or >525, then choose y-cor from 50 to 550
-   else choose y-cor from either 50 to 75 or 525 to 550
-   also-
-   make the spawn range a different color?
-   */
-  //make bugs to add to queue
   bugsLeft = 10;
- 
-  if (_level == 1)
-    bugsLeft = 20;
-  else if (_level == 2)
-    bugsLeft = 30;
     
   for (int i = 0; i < bugsLeft; i++) 
-    _pests.add(new Beetle()); //ADD DIFF BUGS IN DIFF PROPORTIONS DEPENDING ON LEVEL
+    _pests.add(new Beetle()); 
 }
 
 void draw() {
@@ -132,13 +120,14 @@ void helpScreen() {
   textAlign(CENTER);
   text("HELP",width/2,35);
   textSize(20);
-  text("You are the victim of a pest infestation",width/2, 60);
-  text("and your food is being eaten by the pests!",width/2,85);
-  text("Click on the pests before they get to the white circle (the food).",width/2,110);
-  text("Buy obstacles in the shop tab at the bottom to help stop them.",width/2,135);
-  text("If you kill them all before all the food is gone, you win!",width/2,160);
-  text("If you kill two or three or more at the same time...",width/2,185);
-  text("you'll get more points!",width/2,210);
+  text("You are the victim of a pest infestation",width/2, 65);
+  text("and your food is being eaten by the pests!",width/2,90);
+  text("Click on the pests before they get to the white circle (the food).",width/2,115);
+  text("Buy obstacles in the shop tab at the bottom to help stop them.",width/2,140);
+  text("If you kill them all before all the food is gone, you win!",width/2,165);
+  text("Bugs will have different sizes and speeds as you progress...",width/2,190);
+  text("but you might not be able to tell which is which!",width/2,215);
+  text("CLICK if you're ready to begin!",width/2,250);
 }
 
 //Setting up game's screen
@@ -169,11 +158,17 @@ void gameScreen() {
   //PRINT STORAGE
   if (_storage.draw() || bugsLeft <= 0) {
     text("GAME OVER",_storage.getX(), _storage.getY());
-    _screen = END;
-    if (bugsLeft <= 0)
+    if (bugsLeft <= 0) {
         text("YOU WIN", _storage.getX(), _storage.getY()+50);
-    else
+        if (_level < 10) {
+          _nextGame = true;
+          text("click for next round", _storage.getX(), _storage.getY()+80);
+        }
+    }
+    else {
+        _screen = END;
         text ("YOU LOSE", _storage.getX(), _storage.getY()+50);
+    }
   }
   
   //SPAWN BUGS AND PROCESS STATES
@@ -308,12 +303,39 @@ void mousePressed() {
     }
   }
   else if ( _screen == HELP ) {
-    //Display help screen
-    //Create a button somewhere to go BACK
+    _screen = HOME;
   }
   else if ( _screen == PLAY ) {
 
     //All functions using a mouse click within the game will go here:
+    
+     if (_nextGame == true) {
+      _nextGame = false;
+      _level+=1;
+      _pests = new ArrayList();
+      if (_level == 1) {
+        for (int i = 0; i < 10; i++) {
+          _pests.add(new Beetle());
+          if (i % 2 == 0) {
+            _pests.add(new Termite());
+          }
+        }
+      }
+      else if (_level == 2) {
+        for (int i = 0; i < 10; i++) {
+          _pests.add(new Beetle());
+          if (i % 2 == 0) {
+            _pests.add(new Termite());
+          }
+          else {
+            _pests.add(new Roach());
+          }
+        }
+      }
+      bugsLeft = _pests.size();
+    }
+    
+    
     //1. Killing Pests
     for (int i = 0; i < _pests.size(); i++) {
        if (abs(mouseX - _pests.get(i).getX()) < 15 && //RANGE SHOULD DEPEND ON SIZE

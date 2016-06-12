@@ -83,13 +83,22 @@ public abstract class Pest {
         return true;
     return false;
   }
-  
+    
+  void move() {    
+    //make it approach the food
+    if (state == ALIVE) {
+      if (xcor < 313)
+        xcor += dx;
+      else 
+        xcor -= dx;
+      if (ycor < 300)
+        ycor += dy;
+      else
+        ycor -= dy;
+    }
+  }
   
   //ABSTRACT METHODS
   
   abstract void draw();
-  
-  abstract void move();
-  
-  //abstract void attack();
 }

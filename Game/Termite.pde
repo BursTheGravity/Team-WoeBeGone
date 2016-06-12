@@ -13,18 +13,4 @@ public class Termite extends Pest {
     color c = color( 0,255,0 );
     fill(c);
   }
-
-  void move() {    
-    //need to make it approach the food
-    if (state == ALIVE) {
-      if (xcor < 313)
-        xcor += dx;
-      else 
-        xcor -= dx;
-      if (ycor < 300)
-        ycor += dy;
-      else
-        ycor -= dy;
-    }
-  }
 }

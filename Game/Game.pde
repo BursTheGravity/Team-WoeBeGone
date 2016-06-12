@@ -163,10 +163,10 @@ void gameScreen() {
   
   //PRINT STORAGE
   if (_storage.draw() || bugsLeft <= 0) {
-    text("GAME OVER",_storage.getX(), _storage.getY());
+    text("GAME OVER",_storage.getX(), _storage.getY()); //nOT SURE WHY YOU WIN SOMETIMES BEFORE ALL THE BUGS ARE KILLED
     if (bugsLeft <= 0) {
         text("YOU WIN", _storage.getX(), _storage.getY()+50);
-        if (_level < 10) {
+        if (_level < 5) {
           _nextGame = true;
           text("click for next round", _storage.getX(), _storage.getY()+80);
         }
@@ -303,6 +303,67 @@ void displayShop() {
   textSize(40);
 }
 
+
+//start the next wave
+void addPests() {
+   if (_level == 1) {
+      for (int i = 0; i < 10; i++) {
+        _pests.add(new Beetle());
+        if (i % 2 == 0) {
+          _pests.add(new Termite());
+        }
+      }
+    }
+    else if (_level == 2) {
+      for (int i = 0; i < 10; i++) {
+        _pests.add(new Beetle());
+        if (i % 2 == 0) {
+          _pests.add(new Termite());
+        }
+        else {
+          _pests.add(new Roach());
+        }
+      }
+   }
+   else if (_level == 3) {
+      for (int i = 0; i < 15; i++) {
+        _pests.add(new Beetle());
+        if (i % 2 == 0) {
+          _pests.add(new Termite());
+        }
+        else if (i % 3 == 0) {
+          _pests.add(new Mouse());
+        }
+        else {
+          _pests.add(new Roach());
+        }
+      }
+   }
+   else if (_level == 4) {
+      for (int i = 0; i < 15; i++) {
+        _pests.add(new Termite());
+        if (i % 2 == 0) {
+          _pests.add(new Beetle());
+        }
+        else if (i % 3 == 0) {
+          _pests.add(new Roach());
+        }
+      }
+   }
+   else if (_level == 5) {
+      for (int i = 0; i < 15; i++) {
+        _pests.add(new Mouse());
+        if (i % 2 == 0) {
+          _pests.add(new Beetle());
+        }
+        else if (i % 3 == 0) {
+          _pests.add(new Roach());
+        }
+      }
+   }
+}
+
+
 void mousePressed() {
 
   //Home Screen
@@ -323,33 +384,15 @@ void mousePressed() {
 
     //All functions using a mouse click within the game will go here:
     
-     if (_nextGame == true) {
-      _nextGame = false;
-      _level+=1;
-      _pests = new ArrayList();
-      if (_level == 1) {
-        for (int i = 0; i < 10; i++) {
-          _pests.add(new Beetle());
-          if (i % 2 == 0) {
-            _pests.add(new Termite());
-          }
-        }
-      }
-      else if (_level == 2) {
-        for (int i = 0; i < 10; i++) {
-          _pests.add(new Beetle());
-          if (i % 2 == 0) {
-            _pests.add(new Termite());
-          }
-          else {
-            _pests.add(new Roach());
-          }
-        }
-      }
-      bugsLeft = _pests.size();
+    //start next level
+    if (_nextGame == true) {
+      _nextGame = false; //reset this boolean
+      _level+=1; //increment level;
+      _pests = new ArrayList(); //refresh arraylist
+      addPests(); 
+      bugsLeft = _pests.size(); //update how many to kill to win
     }
-    
-    
+     
     //1. Killing Pests
     for (int i = 0; i < _pests.size(); i++) {
        if (abs(mouseX - _pests.get(i).getX()) < 15 && //RANGE SHOULD DEPEND ON SIZE

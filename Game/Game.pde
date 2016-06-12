@@ -54,15 +54,14 @@ void setup() {
    make the spawn range a different color?
    */
   //make bugs to add to queue
-   int numPests = 10;
-  bugsLeft = numPests;
-  
+  bugsLeft = 10;
+ 
   if (_level == 1)
-    numPests = 20;
+    bugsLeft = 20;
   else if (_level == 2)
-    numPests = 30;
+    bugsLeft = 30;
     
-  for (int i = 0; i < numPests; i++) 
+  for (int i = 0; i < bugsLeft; i++) 
     _pests.add(new Beetle()); //ADD DIFF BUGS IN DIFF PROPORTIONS DEPENDING ON LEVEL
 }
 
@@ -122,7 +121,15 @@ void helpScreen() {
   textSize(30);
   fill(255);
   textAlign(CENTER);
-  text("UNDER CONSTRUCTION", 150, 300);
+  text("HELP",width/2,35);
+  textSize(20);
+  text("You are the victim of a pest infestation",width/2, 60);
+  text("and your food is being eaten by the pests!",width/2,85);
+  text("Click on the pests before they get to the white circle (the food).",width/2,110);
+  text("<ADD OBSTACLE INFO HERE>",width/2,135);
+  text("If you kill them all before all the food is gone, you win!",width/2,160);
+  text("If you kill two or three or more at the same time...",width/2,185);
+  text("you'll get more points!",width/2,210);
 }
 
 //Setting up game's screen

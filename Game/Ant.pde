@@ -3,8 +3,7 @@ public class Ant extends Pest {
   public Ant() { 
     super();
     HP = 1;
-    dx = .3;
-    dy = .3;
+    speed = .3;
     size = 10;
   }
 

@@ -5,6 +5,7 @@
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
+
 //ints for _screen
 final static int HOME = 0;
 final static int HELP = 1;
@@ -32,7 +33,6 @@ ArrayList<Pest> _pests;
 ALQueue<Obstacle> _processor;
 String _hint;
 int bugsLeft;
-//queue ConstructionQueue;
 
 void setup() {
 
@@ -56,6 +56,7 @@ void setup() {
   for (int i = 0; i < bugsLeft; i++) 
     _pests.add(new Beetle()); 
 }
+
 
 void draw() {
 
@@ -304,7 +305,7 @@ void displayShop() {
 }
 
 
-//start the next wave
+//start the next wave based on level
 void addPests() {
    if (_level == 1) {
       for (int i = 0; i < 10; i++) {

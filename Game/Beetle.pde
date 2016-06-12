@@ -3,8 +3,7 @@ public class Beetle extends Pest {
   public Beetle() { 
     super();
     HP = 1;
-    dx = .2;
-    dy = .2;
+    speed = .2;
     size = 20;
   }
 

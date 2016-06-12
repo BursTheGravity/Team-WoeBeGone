@@ -6,7 +6,7 @@ public abstract class Pest {
   final static int DEAD = 1;
 
   int HP, state, size;
-  float xcor,ycor, dx, dy;
+  float xcor,ycor,speed;
   
   //CONSTRUCTORS
   public Pest() {
@@ -56,6 +56,7 @@ public abstract class Pest {
   public void setY ( int i ) { ycor = i; }
   public void setState ( int i ) { state = i; }
 
+  //Other Methods
   public boolean isAlive() { return HP > 0; }
   public void lowerHP() { 
     HP -= 1;
@@ -67,13 +68,8 @@ public abstract class Pest {
 
 
   //==========================================
-  void bounce(){
-    if (xcor <= 125 )
-      dx = -dx;
-    if (ycor <= 100 || ycor >= 500)
-      dy = -dy;
-  }
   
+  //call move and see what state it's in and if it's on the food
   boolean process(int storSize){
     move();
     if (state==1) 
@@ -89,13 +85,13 @@ public abstract class Pest {
     //make it approach the food
     if (state == ALIVE) {
       if (xcor < 313)
-        xcor += dx;
+        xcor += speed;
       else 
-        xcor -= dx;
+        xcor -= speed;
       if (ycor < 300)
-        ycor += dy;
+        ycor += speed;
       else
-        ycor -= dy;
+        ycor -= speed;
     }
   }
   
@@ -103,13 +99,13 @@ public abstract class Pest {
     //make it move away from the food
     if (state == ALIVE) {
       if (xcor < 313)
-        xcor -= 2 * dx;
+        xcor -= 2 * speed;
       else 
-        xcor += 2 * dx;
+        xcor += 2 * speed;
       if (ycor < 300)
-        ycor -= 2 * dy;
+        ycor -= 2 * speed;
       else
-        ycor += 2 * dy;
+        ycor += 2 * speed;
     }
   }
   

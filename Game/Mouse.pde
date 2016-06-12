@@ -3,8 +3,7 @@ public class Mouse extends Pest {
   public Mouse() { 
     super();
     HP = 4;
-    dx = .3;
-    dy = .3;
+    speed = .3;
     size = 30;
   }
 

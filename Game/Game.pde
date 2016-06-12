@@ -84,6 +84,12 @@ void draw() {
   }
 }
 
+//return true if obstacle and pest given are touching-- NOT SURE IF THIS WORKS RIGHT 
+boolean isTouching(Obstacle o, Pest p) {
+    return ((abs(o.getX() - p.getX()) < o.getWidth()/2) &&
+        (abs(o.getY() - p.getY()) < o.getHeight()));
+}
+
 //Setting up game's home screen
 void homeScreen() {
   background(0);
@@ -168,17 +174,25 @@ void gameScreen() {
     else {
         _screen = END;
         text ("YOU LOSE", _storage.getX(), _storage.getY()+50);
+        text("click to go back home",_storage.getX(), _storage.getY()+80);
     }
   }
   
   //SPAWN BUGS AND PROCESS STATES
   for (int i = 0; i < _pests.size(); i++) {
-    _pests.get(i).move();
-  }
-  for (int i = 0; i < _pests.size(); i++) {
     _pests.get(i).draw();
+    
+    //if the pests are near or on the food, decrease food hp
     if (_pests.get(i).process(_storage.getSize()))
       _storage.lowerHP();
+      
+    //dealing with obstacles- if pests near, breaks it down
+    for (int z = 0; z < _obstacles.size(); z++) {
+        if (isTouching(_obstacles.get(z),_pests.get(i))) {
+            _pests.get(i).moveBack(); //obstacles slows it down/stops it until it is destroyed
+            _obstacles.get(z).lowerHP();
+        }
+    }
   }
   
   //PROCESSOR (PRIORITY QUEUE)
@@ -302,7 +316,7 @@ void mousePressed() {
       _screen = HELP;
     }
   }
-  else if ( _screen == HELP ) {
+  else if ( _screen == HELP || _screen == END ) {
     _screen = HOME;
   }
   else if ( _screen == PLAY ) {

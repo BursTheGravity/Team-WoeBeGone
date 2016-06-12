@@ -47,6 +47,14 @@ Changes:
 - Created placement of obstacles (rectangles only)
 - Fixed up functionality with addition of creation of obstacles
 
+
+User: Jannie (hyketwig)
+Changes:
+- added pest spawning and pest files
+- added pest features like moving around and eating food
+- added features where things with no HP disappeared
+- edited help page
+
 ==============================================================
 
 Date: 2016-06-12
@@ -67,5 +75,15 @@ Changes:
 	and show up as blue
 	- Constructing objects are FIFO order, and only timer
 	of first item will count down
+	
+	
+User: Jannie (hyketwig)
+Changes:
+- had pests respond to obstacles
+- fixed bugs in relation to pest spawning
+- streamlined code
+- added restart and end screen features
+- edited help page
+- other things... check commits
 
 ==============================================================

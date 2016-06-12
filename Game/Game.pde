@@ -210,7 +210,7 @@ void mousePressed() {
     //Current obstacle shop = top left corner
     for (int i = 0; i < _pests.size(); i++) {
        if (abs(mouseX - _pests.get(i).getX()) < 15 && //RANGE SHOULD DEPEND ON SIZE
-           abs(mouseY - _pests.get(i).getY()) < 15) {
+           abs(mouseY - _pests.get(i).getY()) < 15 && _pests.get(i).getState()==0) {
            _pests.get(i).lowerHP();
            _score++;
            bugsLeft--;

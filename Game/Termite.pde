@@ -3,8 +3,8 @@ public class Termite extends Pest {
   public Termite() { 
     super();
     HP = 1;
-    dx = .2;
-    dy = .2;
+    dx = .6;
+    dy = .6;
     size = 15;
   }
 

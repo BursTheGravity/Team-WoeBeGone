@@ -19,6 +19,7 @@ boolean _gameOver;
 boolean _startGame;
 boolean _holdingObstacle;
 boolean _nextGame;
+boolean _restart;
 int _screen;
 int _money;
 int _level;
@@ -39,9 +40,6 @@ void setup() {
   homeScreen();
 
   //VARIABLES
-  _startGame=false;
-  _gameOver = false;
-  _holdingObstacle = false;
   _screen = HOME;
   _money = 5000;
   _level = 0;
@@ -364,10 +362,38 @@ void addPests() {
 }
 
 
+//reset all the variables to start the game again
+void restart() {
+   homeScreen();
+
+  //VARIABLES
+  _screen = HOME;
+  _money = 5000;
+  _level = 0;
+  _score = 0;
+  _storage = new Storage(25);
+  _obstacles = new ArrayList<Obstacle>();
+  _hint="Good Luck";
+  _processor=new ALQueue<Obstacle>();
+  _pests = new ArrayList<Pest>();
+  textAlign(CENTER);
+
+  bugsLeft = 10;
+    
+  for (int i = 0; i < bugsLeft; i++) 
+    _pests.add(new Beetle()); 
+}
+
+
+//what happens when you press the mouse!
 void mousePressed() {
 
   //Home Screen
   if ( _screen == HOME ) {
+    if (_restart == true) {
+      _restart = false;
+      restart();
+    }
 
     if ( (mouseX > 250) && (mouseX < 375) && (mouseY > 250) && (mouseY < 300) ) {
       _startGame=true;
@@ -378,6 +404,7 @@ void mousePressed() {
     }
   }
   else if ( _screen == HELP || _screen == END ) {
+    _restart = true;
     _screen = HOME;
   }
   else if ( _screen == PLAY ) {

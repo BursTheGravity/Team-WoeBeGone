@@ -3,8 +3,8 @@ public class Roach extends Pest {
   public Roach() { 
     super();
     HP = 2;
-    dx = .1;
-    dy = .1;
+    dx = .4;
+    dy = .4;
     size = 20;
   }
 

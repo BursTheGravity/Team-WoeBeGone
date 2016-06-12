@@ -41,7 +41,7 @@ void setup() {
   _gameOver = false;
   _holdingObstacle = false;
   _screen = HOME;
-  _money = 10000;
+  _money = 50;
   _level = 0;
   _score = 0;
   _storage = new Storage(25);
@@ -134,7 +134,7 @@ void helpScreen() {
   text("You are the victim of a pest infestation",width/2, 60);
   text("and your food is being eaten by the pests!",width/2,85);
   text("Click on the pests before they get to the white circle (the food).",width/2,110);
-  text("<ADD OBSTACLE INFO HERE>",width/2,135);
+  text("Buy obstacles in the shop tab at the bottom to help stop them.",width/2,135);
   text("If you kill them all before all the food is gone, you win!",width/2,160);
   text("If you kill two or three or more at the same time...",width/2,185);
   text("you'll get more points!",width/2,210);
@@ -295,6 +295,7 @@ void mousePressed() {
            _pests.get(i).lowerHP();
            _score++;
            bugsLeft--;
+           _money+=10;
        }
      }
      //2. Buying Obstacles

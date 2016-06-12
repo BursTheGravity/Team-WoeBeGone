@@ -61,3 +61,11 @@ Changes:
 - Obstacles are properly placed (with color!!)
 - Obstacles are properly added into ArrayList<Obstacle> 
 - Obstacles each have a specific level, which affects HP
+- Added ALQueue functionality for purchasing obstacles
+	- Constructing objects show up red
+	- Alive objects are placed in _obstacles arraylist,
+	and show up as blue
+	- Constructing objects are FIFO order, and only timer
+	of first item will count down
+
+==============================================================

@@ -13,6 +13,7 @@ final static int END = 3;
 color yellow = color(255, 204, 0);
 color purple = color(175, 100, 220);
 color blue = color(20, 75, 200);
+color red = color( 255,0,0 );
 
 boolean _gameOver;
 boolean _startGame;
@@ -26,7 +27,7 @@ Obstacle _currObstacle;
 PShape _currShape;
 ArrayList<Obstacle> _obstacles;
 ArrayList<Pest> _pests;
-PriorityQueue _processor;
+ALQueue<Obstacle> _processor;
 String _hint;
 int bugsLeft;
 //queue ConstructionQueue;
@@ -41,13 +42,13 @@ void setup() {
   _gameOver = false;
   _holdingObstacle = false;
   _screen = HOME;
-  _money = 50;
+  _money = 5000;
   _level = 0;
   _score = 0;
   _storage = new Storage(25);
   _obstacles = new ArrayList<Obstacle>();
   _hint="Good Luck";
-  _processor=new PriorityQueue();
+  _processor=new ALQueue<Obstacle>();
   _pests = new ArrayList<Pest>();
   textAlign(CENTER);
 
@@ -185,13 +186,38 @@ void gameScreen() {
       _storage.lowerHP();
   }
   
+  //PROCESSOR (PRIORITY QUEUE)
+  if ( !_processor.isEmpty() ) {
+    //Placing down all obstacles within the queue
+    for ( int i = _processor.size(); i > 0 ; i-- ) {
+      Obstacle temp = _processor.get(i);
+      stroke(yellow);
+      fill(red);
+      rect(temp.xcor, temp.ycor, temp._width, temp._height);
+    }
+    //Dealing with first obstacle in queue
+    Obstacle foo = _processor.peekFront();
+    if ( foo.timer > 0 ) {
+      foo.timer -= 1;
+    }
+    else if ( foo.timer == 0 ) {
+      foo.state = foo.ALIVE;
+      _obstacles.add( _processor.dequeue() );
+    }
+  }
+  
   //OBSTACLES
   if ( !_obstacles.isEmpty() ) {
     for ( int i = 0; i < _obstacles.size(); i++ ) {
       Obstacle x = _obstacles.get(i);
-      stroke(yellow);
-      fill(blue);
-      rect(x.xcor, x.ycor, x._width, x._height);
+      if ( x.isAlive() && x.state == x.ALIVE ) {
+        stroke(yellow);
+        fill(blue);
+        rect(x.xcor, x.ycor, x._width, x._height);
+      }
+      else if ( !x.isAlive() ) {
+        rect(x.xcor, x.ycor, 0, 0);
+      }
       stroke(255);
       fill(255);
     }
@@ -360,7 +386,7 @@ void mousePressed() {
       if ((mouseX>125)&& (mouseX<525)&&(mouseY>100)&&(mouseY<500)) {
         _currObstacle.setX(mouseX);
         _currObstacle.setY(mouseY);
-        _obstacles.add(_currObstacle);
+        _processor.enqueue(_currObstacle);
         _holdingObstacle = false;
       }
     }

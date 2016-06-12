@@ -1,3 +1,4 @@
+import java.util.Random;
 public abstract class Pest {
  
   //VARIABLES
@@ -9,9 +10,35 @@ public abstract class Pest {
   
   //CONSTRUCTORS
   public Pest() {
-    xcor = (int) random(400) + 120 - size; //change these to get it into the right box
-    ycor = (int) random(400) + 95 - size;
+    /*BUG SPAWN RANGE: --- ***we're just doing the bug screen without side panes first***
+   X-cor: randomly choose an x-cor from 75 to 555...
+   if <100 or >525, then choose y-cor from 50 to 550
+   else choose y-cor from either 50 to 100 or 525 to 550
+   also-
+   make the spawn range a different color?
+   */
+  //make bugs to add to queue
+    xcor = (int) (random(475)) + 75 ; //change these to get it into the right box
+    if (xcor<125 || xcor>525){
+      ycor=500;
+      //ycor = (int) random(500) + 50 - size;
+    }
+    else{
+      //int tmp = (int) (random(1));
+      //if (tmp==0){
+        //ycor= (int) random(50)+50;
+      //}
+      //else{
+        Random rand=new Random(); 
+        if(Math.random() < 0.5) {
+        ycor=(int) random(25)+525;
+        }
+        else{
+          ycor=(int)random(50)+50;
+      //}
+    }
     state = ALIVE;
+  }
   }
 
 

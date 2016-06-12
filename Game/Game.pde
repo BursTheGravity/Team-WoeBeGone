@@ -144,38 +144,41 @@ void gameScreen() {
   text("$"+_money, 125, 35);
   text("Score: "+_score, 425, 35);
   //PRINT STORAGE
-  if (_storage.draw() || bugsLeft <= 0) 
+  if (_storage.draw() || bugsLeft <= 0) {
     text("GAME OVER",_storage.getX(), _storage.getY());
-
-  if (bugsLeft <= 0) 
-    text("YOU WIN", _storage.getX(), _storage.getY()+50);
-    
-  //SPAWN BUGS AND PROCESS STATES
-  for (int i = 0; i < _pests.size(); i++) {
-    _pests.get(i).move();
+    _screen = END;
+    if (bugsLeft <= 0)
+        text("YOU WIN", _storage.getX(), _storage.getY()+50);
+    else
+        text ("YOU LOSE", _storage.getX(), _storage.getY()+50);
   }
-  for (int i = 0; i < _pests.size(); i++) {
-    _pests.get(i).draw();
-    if (_pests.get(i).process(_storage.getSize()))
-      _storage.lowerHP();
-  }
-  
-  
-  //OBSTACLES
-  if ( !_obstacles.isEmpty() ) {
-    for ( int i = 0; i < _obstacles.size(); i++ ) {
-      Obstacle x = _obstacles.get(i);
-      rect(x.xcor, x.ycor, x._width, x._height);
+      
+    //SPAWN BUGS AND PROCESS STATES
+    for (int i = 0; i < _pests.size(); i++) {
+      _pests.get(i).move();
     }
-  }
+    for (int i = 0; i < _pests.size(); i++) {
+      _pests.get(i).draw();
+      if (_pests.get(i).process(_storage.getSize()))
+        _storage.lowerHP();
+    }
+    
+    
+    //OBSTACLES
+    if ( !_obstacles.isEmpty() ) {
+      for ( int i = 0; i < _obstacles.size(); i++ ) {
+        Obstacle x = _obstacles.get(i);
+        rect(x.xcor, x.ycor, x._width, x._height);
+      }
+    }
   
-
-  //Temp Shop
-  stroke(150);
-  fill(200);
-  rect(25, 100, 25, 25);
-
-  fill(255);
+  
+    //Temp Shop
+    stroke(150);
+    fill(200);
+    rect(25, 100, 25, 25);
+  
+    fill(255);
 }
 
 void mousePressed() {

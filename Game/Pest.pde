@@ -4,7 +4,8 @@ public abstract class Pest {
   final static int ALIVE = 0;
   final static int DEAD = 1;
 
-  int HP, state, dx, dy, xcor, ycor, size;
+  int HP, state, size;
+  float xcor,ycor, dx, dy;
   
   //CONSTRUCTORS
   public Pest() {
@@ -17,8 +18,8 @@ public abstract class Pest {
   //==========================================
   //Accessors
   public int getHP() { return HP; }
-  public int getX() { return xcor; }
-  public int getY() { return ycor; }
+  public float getX() { return xcor; }
+  public float getY() { return ycor; }
   public int getState() { return state; }
 
   //Mutators
@@ -28,23 +29,32 @@ public abstract class Pest {
   public void setState ( int i ) { state = i; }
 
   public boolean isAlive() { return HP > 0; }
-  public void lowerHP() { HP -= 1; }
+  public void lowerHP() { 
+    HP -= 1;
+    if (HP <= 0)
+      state = 1;
+  }
   public void raiseHP() { HP += 1; }
   public void raiseHP(int amt) { HP += amt; }
 
 
   //==========================================
   void bounce(){
-    if (xcor <= 125 || xcor >= 525)
+    if (xcor <= 125 )
       dx = -dx;
     if (ycor <= 100 || ycor >= 500)
       dy = -dy;
   }
   
-  void process(){
+  boolean process(int storSize){
     move();
-    if (state==2) 
+    if (state==1) 
       size = 0;
+    if (state==0)
+      if (abs(xcor - 313) < storSize && 
+          abs(ycor - 300) < storSize)
+        return true;
+    return false;
   }
   
   
@@ -54,5 +64,5 @@ public abstract class Pest {
   
   abstract void move();
   
-  abstract void attack();
+  //abstract void attack();
 }

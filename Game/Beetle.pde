@@ -3,38 +3,28 @@ public class Beetle extends Pest {
   public Beetle() { 
     super();
     HP = 1;
-    dx = (int)random(2);
-    dy = (int)random(2);
+    dx = .1;
+    dy = .1;
     size = 20;
   }
 
   void draw() {
-    ellipse(xcor,ycor,size,size);
+    ellipse(xcor,ycor,size,size); //EVENTUALLY MAKE A PSHAPE
     color c = color( 255,0,0 );
     fill(c);
   }
 
-  void move() {
-    int randX = (int)random(2);
-    int randY = (int)random(2);
-    
-    if (randX == 0)
-      randX = -1;
-    else 
-      randX = 1;
-    
-    if (randY == 0)
-      randY = -1;
-    else 
-      randY = 1;
-      
+  void move() {    
+    //need to make it approach the food
     if (state == ALIVE) {
-      xcor += dx; //add wiggle?
-      ycor += dy;
-      bounce();   
+      if (xcor < 313)
+        xcor += dx;
+      else 
+        xcor -= dx;
+      if (ycor < 300)
+        ycor += dy;
+      else
+        ycor -= dy;
     }
   }
-  
-  void attack() {}
-    //if in its range-- each pest has diff range-- eat food
 }

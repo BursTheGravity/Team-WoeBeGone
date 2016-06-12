@@ -7,29 +7,14 @@ public class Obstacle extends Purchasable implements Processable{
 
 	protected int HP, xcor, ycor, _width, _height, state;
 
-  public Obstacle(int x, int y, int w, int h) {
-    HP = 50;
-    xcor = x;
-    ycor = y;
+  public Obstacle(int w, int h, int diff) {
+    HP = diff * 10;
     _width = w;
     _height = h;
-    state = ALIVE;
-    cost = 100;
   }
-
-	//Accessors
-	public int getHP() { return HP; }
-	public int getX() { return xcor; }
-	public int getY() { return ycor; }
-	public int getState() { return state; }
-  public int getCost() { return cost; }
-
-	//Mutators
-	public void setHP ( int i ) { HP = i; }
-	public void setX ( int i ) { xcor = i; }
-	public void setY ( int i ) { ycor = i; }
-	public void setState ( int i ) { state = i; }
-  public void setCost ( int i ) { cost = i; }
+  
+  public void setX(int x) { xcor = x; }
+  public void setY(int y) { ycor = y; }
   
   public void process(){
     state=CONSTRUCTING;

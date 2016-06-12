@@ -48,3 +48,16 @@ Changes:
 - Fixed up functionality with addition of creation of obstacles
 
 ==============================================================
+
+Date: 2016-06-12
+--------------------------------------------------------------
+
+User: Leo Au-Yeung (BursTheGravity)
+Changes:
+- Completed store!
+	- Completed all designs manually (Rectangles, text, icons)
+	- Can purchase obstacles of various sizes by clicking within
+	the designated icon with enough money
+- Obstacles are properly placed (with color!!)
+- Obstacles are properly added into ArrayList<Obstacle> 
+- Obstacles each have a specific level, which affects HP

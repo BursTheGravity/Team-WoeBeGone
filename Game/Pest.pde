@@ -48,6 +48,7 @@ public abstract class Pest {
   public float getX() { return xcor; }
   public float getY() { return ycor; }
   public int getState() { return state; }
+  public int getSize() { return size; }
 
   //Mutators
   public void setHP ( int i ) { HP = i; }

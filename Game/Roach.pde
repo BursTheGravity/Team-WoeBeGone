@@ -9,7 +9,7 @@ public class Roach extends Pest {
   }
 
   void draw() {
-    ellipse(xcor,ycor,size,size); //EVENTUALLY MAKE A PSHAPE
+    ellipse(xcor,ycor,size,size);
     color c = color( 0,0,255 );
     fill(c);
   }

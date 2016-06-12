@@ -9,7 +9,7 @@ public class Ant extends Pest {
   }
 
   void draw() {
-    ellipse(xcor,ycor,size,size); //EVENTUALLY MAKE A PSHAPE
+    ellipse(xcor,ycor,size,size);
     color c = color( 136,27,219 );
     fill(c);
   }

@@ -82,11 +82,13 @@ void draw() {
   }
 }
 
+
 //return true if obstacle and pest given are touching-- NOT SURE IF THIS WORKS RIGHT 
 boolean isTouching(Obstacle o, Pest p) {
     return ((abs(o.getX() - p.getX()) < o.getWidth()/2) &&
         (abs(o.getY() - p.getY()) < o.getHeight()));
 }
+
 
 //Setting up game's home screen
 void homeScreen() {
@@ -112,9 +114,8 @@ void homeScreen() {
   rect(250, 350, 125, 50);
   fill(0);
   text ("HELP", 310, 389);
-
-  //Credits ?? Later
 }
+
 
 //Setting up game's help screen
 void helpScreen() {
@@ -133,6 +134,7 @@ void helpScreen() {
   text("but you might not be able to tell which is which!",width/2,215);
   text("CLICK if you're ready to begin!",width/2,250);
 }
+
 
 //Setting up game's screen
 void gameScreen() {
@@ -422,8 +424,8 @@ void mousePressed() {
      
     //1. Killing Pests
     for (int i = 0; i < _pests.size(); i++) {
-       if (abs(mouseX - _pests.get(i).getX()) < 15 && //RANGE SHOULD DEPEND ON SIZE
-           abs(mouseY - _pests.get(i).getY()) < 15 && _pests.get(i).getState()==0) {
+       if (abs(mouseX - _pests.get(i).getX()) < _pests.get(i).getSize() &&
+           abs(mouseY - _pests.get(i).getY()) < _pests.get(i).getSize() && _pests.get(i).getState()==0) {
            _pests.get(i).lowerHP();
            _score++;
            bugsLeft--;

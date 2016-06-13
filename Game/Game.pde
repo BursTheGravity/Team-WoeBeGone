@@ -91,13 +91,13 @@ boolean isTouching(Obstacle o, Pest p) {
     if (abs(p.getX() - o.getX() - o.getWidth()/2)>o.getWidth()/2+p.getSize()/2){
       return false;
     }
-    if (abs(p.getX() - o.getX() - o.getWidth()/2)>o.getHeight()/2+p.getSize()/2){
+    if (abs(p.getY() - o.getY() - o.getHeight()/2)>o.getHeight()/2+p.getSize()/2){
       return false;
     }
     if (abs(p.getX() - o.getX() - o.getWidth()/2)<=o.getWidth()/2){
       return true;
     }
-    if (abs(p.getX() - o.getX() - o.getWidth()/2)<=o.getHeight()/2){
+    if (abs(p.getY() - o.getY() - o.getWidth()/2)<=o.getHeight()/2){
       return true;
     }
     float tmp=pow(p.getX()-o.getY()/2,2)+pow(p.getY()-o.getHeight()/2,2);

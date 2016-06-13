@@ -41,7 +41,7 @@ void setup() {
 
   //VARIABLES
   _screen = HOME;
-  _money = 10000;
+  _money = 250;
   _level = 0;
   _score = 0;
   _storage = new Storage(5000);
@@ -511,7 +511,7 @@ void mousePressed() {
            if (_pests.get(i).getState()==1){
              bugsLeft--;
            }
-           _money+=10;
+           _money+=25;
        }
      }
      //2. Buying Obstacles

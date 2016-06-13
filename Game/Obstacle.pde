@@ -52,6 +52,5 @@ public class Obstacle extends Purchasable {
     fill(255,77,0);
     ellipse(xcor,ycor,15,15);
     ellipse(xcor,ycor,20,20);
-    delay(3);
   }
 }

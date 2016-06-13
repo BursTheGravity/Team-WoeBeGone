@@ -44,7 +44,7 @@ void setup() {
   _money = 10000;
   _level = 0;
   _score = 0;
-  _storage = new Storage(25);
+  _storage = new Storage(5000);
   _obstacles = new ArrayList<Obstacle>();
   _hint="Good Luck";
   _processor=new ALQueue<Obstacle>();
@@ -136,23 +136,23 @@ void helpScreen() {
   textSize(30);
   fill(255);
   textAlign(CENTER);
-  text("HELP",width/2,35);
+  text("HELP",width/2,45);
   textSize(20);
-  text("You are the victim of a pest infestation",width/2, 65);
-  text("and your food is being eaten by the pests!",width/2,90);
-  text("Click on the pests before they get to the white circle (the food).",width/2,115);
-  text("Buy obstacles in the shop tab at the bottom to help stop them.",width/2,140);
-  text("The obstacles that turn blue are walls.",width/2,165);
-  text("They stop the pests until they break.",width/2,190);
-  text("The obstacles that turn brown and explode are bombs.",width/2,215);
-  text("They kill the pests in their range.",width/2,240);
-  text("The bigger and more expensive the obstacle, the bigger the range.",width/2,265);
-  text("If you kill all the pests before all the food is gone, you win!",width/2,290);
-  text("Pests will have different sizes and speeds as you progress...",width/2,315);
-  text("but you might not be able to tell which is which!",width/2,340);
-  text("Some might need more than one click to kill!",width/2,365);
+  text("You are the victim of a pest infestation",width/2, 75);
+  text("and your food is being eaten by the pests!",width/2,105);
+  text("Click on the pests before they get to the white circle (the food).",width/2,135);
+  text("Buy items in the shop tab at the bottom to help stop them.",width/2,165);
+  text("The items that turn blue are walls.",width/2,195);
+  text("Walls stop the pests until they break.",width/2,225);
+  text("The items that turn red and explode are bombs.",width/2,255);
+  text("Bombs kill the pests in their range.",width/2,285);
+  text("The bigger and more expensive the item, the bigger the range.",width/2,315);
+  text("If you kill all the pests before all the food is gone, you win!",width/2,345);
+  text("Pests will have different sizes and speeds as you progress...",width/2,375);
+  text("but you might not be able to tell which is which!",width/2,405);
+  text("Some might need more than one click to kill!",width/2,435);
   textSize(30);
-  text("CLICK if you're ready to begin!",width/2,410);
+  text("CLICK if you're ready to begin!",width/2,500);
 }
 
 
@@ -184,18 +184,18 @@ void gameScreen() {
   
   //PRINT STORAGE
   if (_storage.draw() || bugsLeft <= 0) {
-    text("GAME OVER",_storage.getX(), _storage.getY()); //nOT SURE WHY YOU WIN SOMETIMES BEFORE ALL THE BUGS ARE KILLED
+    //text("GAME OVER",_storage.getX(), _storage.getY()); //nOT SURE WHY YOU WIN SOMETIMES BEFORE ALL THE BUGS ARE KILLED
     if (bugsLeft <= 0) {
-        text("YOU WIN", _storage.getX(), _storage.getY()+50);
+        text("YOU WIN", _storage.getX(), _storage.getY()+60);
         if (_level < 6) {
           _nextGame = true;
-          text("click for next round", _storage.getX(), _storage.getY()+80);
+          text("click for next round", _storage.getX(), _storage.getY()+90);
         }
     }
     else {
         _screen = END;
-        text ("YOU LOSE", _storage.getX(), _storage.getY()+50);
-        text("click to go back home",_storage.getX(), _storage.getY()+80);
+        text ("YOU LOSE", _storage.getX(), _storage.getY()+60);
+        text("click to go back home",_storage.getX(), _storage.getY()+90);
     }
   }
   
@@ -453,7 +453,7 @@ void restart() {
   _money = 100;
   _level = 0;
   _score = 0;
-  _storage = new Storage(25);
+  _storage = new Storage(5000);
   _obstacles = new ArrayList<Obstacle>();
   _hint="Good Luck";
   _processor=new ALQueue<Obstacle>();

@@ -5,16 +5,15 @@ public class Storage {
   private int HP, xcor, ycor, size, state;
 
   public Storage() {
-    HP = 100;
+    HP = 5000;
     xcor = 313;
     ycor = 300;
-    size = HP;
+    size = 25;
   }
 
   public Storage(int hp) {
     this();
     HP = hp;
-    size = HP;
   }
 
   //Accessors
@@ -42,6 +41,9 @@ public class Storage {
       size = 0;
     ellipseMode(CENTER);
     ellipse(xcor, ycor, size*2, size*2);
+    String _HP = "" + HP;
+    fill(color( 255,0,0 ));
+    text(_HP, xcor, ycor - 30);
     if (state == DEAD)
       return true;
     return false;

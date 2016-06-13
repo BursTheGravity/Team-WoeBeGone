@@ -9,7 +9,7 @@ public class Obstacle extends Purchasable {
   boolean isBomb;
 
   public Obstacle(int w, int h, int diff) {
-    HP = diff * 300;
+    HP = diff * 600;
     _width = w;
     _height = h;
     timer = diff * 60;

@@ -36,7 +36,7 @@ int bugsLeft;
 
 void setup() {
 
-  size(1100, 600);
+  size(930, 600);
   homeScreen();
 
   //VARIABLES

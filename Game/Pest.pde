@@ -7,6 +7,7 @@ public abstract class Pest {
 
   int HP, state, size;
   float xcor,ycor,speed;
+  boolean bombed;
   
   //CONSTRUCTORS
   public Pest() {
@@ -49,12 +50,14 @@ public abstract class Pest {
   public float getY() { return ycor; }
   public int getState() { return state; }
   public int getSize() { return size; }
+  public boolean getB() { return bombed; } //has already been bombed
 
   //Mutators
   public void setHP ( int i ) { HP = i; }
   public void setX ( int i ) { xcor = i; }
   public void setY ( int i ) { ycor = i; }
   public void setState ( int i ) { state = i; }
+  public void setB ( boolean x ) { bombed = x; }
 
   //Other Methods
   public boolean isAlive() { return HP > 0; }

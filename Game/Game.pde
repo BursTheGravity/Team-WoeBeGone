@@ -149,10 +149,11 @@ void helpScreen() {
   text("The items that turn red and explode are bombs.",width/2,255);
   text("Bombs kill the pests in their range.",width/2,285);
   text("The bigger and more expensive the item, the bigger the range.",width/2,315);
-  text("If you kill all the pests before all the food is gone, you win!",width/2,345);
+  text("If you kill all the pests before all the food is gone or you earn enough points, you win!",width/2,345);
   text("Pests will have different sizes and speeds as you progress...",width/2,375);
   text("but you might not be able to tell which is which!",width/2,405);
-  text("Some might need more than one click to kill!",width/2,435);
+  text("Some might need more than one click to kill and obstacles might give you points!",width/2,435);
+  text("Hint: the rightmost column features vertically oriented obstacles!",width/2,460);
   textSize(30);
   text("CLICK if you're ready to begin!",width/2,500);
 }
@@ -172,9 +173,9 @@ void gameScreen() {
 
   //Information
   textSize(30);
-  text("LVL: "+_level, 275, 35);
+  text("LVL: "+_level, 310, 35);
   text("$"+_money, 125, 35);
-  text("Score: "+bugsLeft, 425, 35);
+  text("Score: "+_score, 490, 35);
   
   //Hint
   stroke(0);
@@ -186,12 +187,15 @@ void gameScreen() {
   
   //PRINT STORAGE
   if (_storage.draw() || bugsLeft <= 0) {
-    //text("GAME OVER",_storage.getX(), _storage.getY()); //nOT SURE WHY YOU WIN SOMETIMES BEFORE ALL THE BUGS ARE KILLED
     if (bugsLeft <= 0) {
         text("YOU WIN", _storage.getX(), _storage.getY()+60);
         if (_level < 6) {
           _nextGame = true;
           text("click for next round", _storage.getX(), _storage.getY()+90);
+        }
+        else {
+          _screen = END;
+          text("click to go back home", _storage.getX(), _storage.getY()+90);
         }
     }
     else {
@@ -247,6 +251,7 @@ void gameScreen() {
           Pest x = _pests.get(i);
           if ((x.getSize() + 15) > (sqrt( sq(x.getX() - foo.getX())+sq(x.getY() - foo.getY())))) {
             x.setState(1);
+            x.setB(true);
             _score++;
             bugsLeft--;
             _money += 25;
@@ -513,9 +518,9 @@ void mousePressed() {
            abs(mouseY - _pests.get(i).getY()) < _pests.get(i).getSize() && _pests.get(i).getState()==0) {
            _pests.get(i).lowerHP();
            _score++;
-           if (_pests.get(i).getState()==1){
+           if (_pests.get(i).getState()==1 && !_pests.get(i).getB()) {
              bugsLeft--;
-             _money+=25;
+             _money += 25;
            }
        }
      }

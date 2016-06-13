@@ -249,6 +249,7 @@ void gameScreen() {
             x.setState(1);
             _score++;
             bugsLeft--;
+            _money += 25;
           }
         }
         foo.explode();
@@ -514,8 +515,8 @@ void mousePressed() {
            _score++;
            if (_pests.get(i).getState()==1){
              bugsLeft--;
+             _money+=25;
            }
-           _money+=25;
        }
      }
      //2. Buying Obstacles

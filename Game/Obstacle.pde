@@ -6,6 +6,7 @@ public class Obstacle extends Purchasable //implements Processable{
 	final static int DEAD = 2;
 
 	protected int HP, xcor, ycor, _width, _height, state, timer;
+  boolean isBomb;
 
   public Obstacle(int w, int h, int diff) {
     HP = diff * 10;
@@ -15,7 +16,13 @@ public class Obstacle extends Purchasable //implements Processable{
     state = CONSTRUCTING;
   }
   
+  public Obstacle(int w, int h, int diff, boolean bomb) {
+    this(w,h,diff);
+    isBomb = bomb;
+  }
+  
   public boolean isAlive() { return HP > 0; }
+  public boolean isBomb() { return isBomb; }
   
   //Accessors
   public int getHP() { return HP; }
@@ -26,6 +33,7 @@ public class Obstacle extends Purchasable //implements Processable{
   public int getHeight() { return _height; }
   
   //Mutators
+  public void setState(int s) { state = s; }
   public void setX(int x) { xcor = x; }
   public void setY(int y) { ycor = y; }
   public void lowerHP() { 
@@ -35,5 +43,15 @@ public class Obstacle extends Purchasable //implements Processable{
       _width = 0;
       _height = 0;
     } 
+  }
+  
+  //Other Methods
+
+  //check state if bomb alive
+  void explode() {
+    fill(255,77,0);
+    ellipse(xcor,ycor,15,15);
+    ellipse(xcor,ycor,20,20);
+    delay(3);
   }
 }

@@ -41,7 +41,7 @@ void setup() {
 
   //VARIABLES
   _screen = HOME;
-  _money = 5000;
+  _money = 100;
   _level = 0;
   _score = 0;
   _storage = new Storage(25);
@@ -211,7 +211,22 @@ void gameScreen() {
       foo.timer -= 1;
     }
     else if ( foo.timer == 0 ) {
+      //obstacle ready
       foo.state = foo.ALIVE;
+      
+      //if bomb, explode
+      if (foo.isBomb()) {
+        for (int i = 0; i < _pests.size(); i++) { //auto-bomb radius is 30
+          Pest x = _pests.get(i);
+          if ((x.getSize() + 15) > (sqrt( sq(x.getX() - foo.getX())+sq(x.getY() - foo.getY())))) {
+            x.setState(1);
+          }
+        }
+        foo.explode();
+        foo.setState(2);
+      }
+      
+      //dequeue
       _obstacles.add( _processor.dequeue() );
     }
   }
@@ -222,7 +237,12 @@ void gameScreen() {
       Obstacle x = _obstacles.get(i);
       if ( x.isAlive() && x.state == x.ALIVE ) {
         stroke(yellow);
-        fill(blue);
+        
+        if (x.isBomb())
+          fill(90,57,2);
+        else 
+          fill(blue);
+        
         rect(x.xcor, x.ycor, x._width, x._height);
       }
       else if ( !x.isAlive() ) {
@@ -371,7 +391,7 @@ void restart() {
 
   //VARIABLES
   _screen = HOME;
-  _money = 5000;
+  _money = 100;
   _level = 0;
   _score = 0;
   _storage = new Storage(25);
@@ -438,12 +458,12 @@ void mousePressed() {
      //2. Buying Obstacles
     if ( !_holdingObstacle ) {
       
-      //Square
+      //Square-- *** BOMB *** 
       if ( _money >= 25 && mouseX > 30 && mouseX < 155 && mouseY > 650 && mouseY < 700 ) {
         _money -= 25;
         _holdingObstacle = true;
         _currShape = createShape(RECT, 0, 0, 25, 25);
-        _currObstacle = new Obstacle(25, 25, 1);
+        _currObstacle = new Obstacle(25,25,2,true);
       }
       //Small Rectangle (H)
       else if ( _money >= 50 && mouseX > 185 && mouseX < 310 && mouseY > 650 && mouseY < 700 ) {

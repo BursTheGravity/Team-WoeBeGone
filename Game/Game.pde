@@ -1,4 +1,4 @@
-//Team WoeBeGone -- Leo Au-Yeung, Jannie Li, Henry Zhang
+ //Team WoeBeGone -- Leo Au-Yeung, Jannie Li, Henry Zhang
 //APCS2 pd9
 //Final Project -- Pest Decimation
 //Due Date: 2016-06-13
@@ -174,7 +174,7 @@ void gameScreen() {
   textSize(30);
   text("LVL: "+_level, 275, 35);
   text("$"+_money, 125, 35);
-  text("Score: "+_score, 425, 35);
+  text("Score: "+bugsLeft, 425, 35);
   
   //Hint
   stroke(0);
@@ -248,7 +248,7 @@ void gameScreen() {
           if ((x.getSize() + 15) > (sqrt( sq(x.getX() - foo.getX())+sq(x.getY() - foo.getY())))) {
             x.setState(1);
             _score++;
-            bugsLeft-=1;
+            bugsLeft--;
           }
         }
         foo.explode();

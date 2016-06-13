@@ -61,7 +61,7 @@ public abstract class Pest {
   public void lowerHP() { 
     HP -= 1;
     if (HP <= 0)
-      state = 1;
+      state = DEAD;
   }
   public void raiseHP() { HP += 1; }
   public void raiseHP(int amt) { HP += amt; }

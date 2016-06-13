@@ -429,7 +429,9 @@ void mousePressed() {
            abs(mouseY - _pests.get(i).getY()) < _pests.get(i).getSize() && _pests.get(i).getState()==0) {
            _pests.get(i).lowerHP();
            _score++;
-           bugsLeft--;
+           if (_pests.get(i).getState()==1){
+             bugsLeft--;
+           }
            _money+=10;
        }
      }

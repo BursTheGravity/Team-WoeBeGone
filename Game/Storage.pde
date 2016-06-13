@@ -44,6 +44,7 @@ public class Storage {
     String _HP = "" + HP;
     fill(color( 255,0,0 ));
     text(_HP, xcor, ycor - 30);
+    fill(255);
     if (state == DEAD)
       return true;
     return false;

@@ -1,5 +1,5 @@
-public class Obstacle extends Purchasable //implements Processable{
-  {
+public class Obstacle extends Purchasable {
+  
   final static int INQUEUE=3;
 	final static int ALIVE = 0;
 	final static int CONSTRUCTING = 1;
@@ -9,7 +9,7 @@ public class Obstacle extends Purchasable //implements Processable{
   boolean isBomb;
 
   public Obstacle(int w, int h, int diff) {
-    HP = diff * 10;
+    HP = diff * 300;
     _width = w;
     _height = h;
     timer = diff * 60;

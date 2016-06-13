@@ -57,6 +57,7 @@ Changes:
 - Created placement of obstacles (rectangles only)
 - Fixed up functionality with addition of creation of obstacles
 
+==============================================================
 
 User: Jannie (hyketwig)
 Changes:
@@ -93,8 +94,12 @@ Changes:
 	and show up as blue
 	- Constructing objects are FIFO order, and only timer
 	of first item will count down
-	
-	
+
+==============================================================
+
+Date: 2016-06-12
+--------------------------------------------------------------
+
 User: Jannie (hyketwig)
 Changes:
 - had pests respond to obstacles
@@ -105,6 +110,11 @@ Changes:
 - added bombs
 - other things... check commits
 
+==============================================================
+
+Date: 2016-06-12
+--------------------------------------------------------------
+
 User: Henry Zhang (yhzhan)
 Changes: 
 -Implemented spawn range	
@@ -113,6 +123,13 @@ Changes:
 -Implemented working collision detection
 -Adjusted game visual layout 
 
- 
-
 ==============================================================
+
+Date: 2016-06-12
+--------------------------------------------------------------
+
+User: Leo Au-Yeung (BursTheGravity)
+Changes:
+- Recreated shops on right side
+- Added bombs to shop
+- Fixed layout

@@ -36,12 +36,12 @@ int bugsLeft;
 
 void setup() {
 
-  size(650, 800);
+  size(1100, 600);
   homeScreen();
 
   //VARIABLES
   _screen = HOME;
-  _money = 100;
+  _money = 10000;
   _level = 0;
   _score = 0;
   _storage = new Storage(25);
@@ -175,11 +175,12 @@ void gameScreen() {
   text("Score: "+_score, 425, 35);
   
   //Hint
+  stroke(0);
   fill(150);
-  rect(0, 560, 650, 65);
+  rect(0, 555, 650, 40);
   fill(255);
   textSize(20);
-  text(_hint, 325, 600);
+  text(_hint, 325, 585);
   
   //PRINT STORAGE
   if (_storage.draw() || bugsLeft <= 0) {
@@ -222,7 +223,12 @@ void gameScreen() {
       Obstacle temp = _processor.get(i);
       stroke(yellow);
       fill(red);
-      rect(temp.xcor, temp.ycor, temp._width, temp._height);
+      if ( !temp.isBomb() ) {
+        rect(temp.xcor, temp.ycor, temp._width, temp._height);
+      }
+      else if ( temp.isBomb() ) {
+        ellipse(temp.xcor, temp.ycor, temp._width, temp._height);
+      }
     }
     //Dealing with first obstacle in queue
     Obstacle foo = _processor.peekFront();
@@ -279,66 +285,87 @@ void gameScreen() {
 
 void displayShop() {
   
+  //Divider
+  stroke(100);
+  fill(100);
+  rect(650, 0, 100, 600);
+  
   stroke(200);
   fill(200);
   
   //RECTANGLES FOR ICONS
   
-  //Square
-  rect(30, 650, 125, 50);
   //Small Rectangle (H)
-  rect(185, 650, 125, 50);
+  rect(780, 30, 130, 84);
   //Medium Rectangle (H)
-  rect(340, 650, 125, 50);
+  rect(780, 144, 130, 84);
   //Large Rectangle (H)
-  rect(495, 650, 125, 50);
+  rect(780, 258, 130, 84);
+  //Bomb1
+  rect(780, 372, 130, 84);
+  //Bomb2
+  rect(780, 486, 130, 84);
   //Small Rectangle (V)
-  rect(30, 725, 125, 50);
+  rect(940, 30, 130, 84);
   //Medium Rectangle (V)
-  rect(185, 725, 125, 50);
+  rect(940, 144, 130, 84);
   //Large Rectangle (V)
-  rect(340, 725, 125, 50);
-  //??
-  rect(495, 725, 125, 50);
+  rect(940, 258, 130, 84);
+  //Bomb3
+  rect(940, 372, 130, 84);
+  //???
+  rect(940, 486, 130, 84);
   
   textSize(20);
   stroke(yellow);
   
-  //Square
-  fill(0);
-  text("$25:", 65, 685);
-  fill(blue);
-  rect(100, 665, 25, 25);
   //Small Rectangle (H)
   fill(0);
-  text("$50:", 220, 685);
+  text("$50:", 810, 80);
   fill(blue);
-  rect(255, 665, 35, 25);
+  rect(845, 60, 35, 25);
   //Medium Rectangle (H)
   fill(0);
-  text("$75:", 375, 685);
+  text("$75:", 810, 195);
   fill(blue);
-  rect(410, 665, 43, 25);
+  rect(845, 175, 43, 25);
   //Large Rectangle (H)
   fill(0);
-  text("$100:", 530, 685);
+  text("$100:", 810, 310);
   fill(blue);
-  rect(565, 665, 50, 25);
+  rect(845, 290, 50, 25);
+  //Bomb1
+  fill(0);
+  text("$100:", 810, 425);
+  fill(blue);
+  ellipse(870, 415, 30, 30);
+  //Bomb2
+  fill(0);
+  text("$100:", 810, 540);
+  fill(blue);
+  ellipse(870, 530, 30, 30);
+  
   //Small Rectangle (V)
   fill(0);
-  text("$50:", 65, 760);
+  text("$50:", 970, 80);
   fill(blue);
-  rect(100, 740, 35, 25);
+  rect(1005, 60, 35, 25);
   //Medium Rectangle (V)
   fill(0);
-  text("$75:", 220, 760);
+  text("$75:", 970, 195);
   fill(blue);
-  rect(255, 740, 43, 25);
+  rect(1005, 175, 43, 25);
   //Large Rectangle (V)
   fill(0);
-  text("$100:", 375, 760);
+  text("$100:", 970, 310);
   fill(blue);
-  rect(410, 740, 50, 25);
+  rect(1005, 290, 50, 25);
+  //Bomb3
+  fill(0);
+  text("$100:", 970, 425);
+  fill(blue);
+  ellipse(1030, 415, 30, 30);
+  //??
   
   textSize(40);
 }
@@ -490,55 +517,76 @@ void mousePressed() {
      //2. Buying Obstacles
     if ( !_holdingObstacle ) {
       
-      //Square-- *** BOMB *** 
-      if ( _money >= 25 && mouseX > 30 && mouseX < 155 && mouseY > 650 && mouseY < 700 ) {
-        _money -= 25;
-        _holdingObstacle = true;
-        _currShape = createShape(RECT, 0, 0, 25, 25);
-        _currObstacle = new Obstacle(25,25,2,true);
-      }
       //Small Rectangle (H)
-      else if ( _money >= 50 && mouseX > 185 && mouseX < 310 && mouseY > 650 && mouseY < 700 ) {
+      if ( _money >= 50 && mouseX > 780 && mouseX < 910 && mouseY > 30 && mouseY < 114 ) {
         _money -= 50;
         _holdingObstacle = true;
         _currShape = createShape(RECT, 0, 0, 40, 25);
         _currObstacle = new Obstacle(40, 25, 2);
       }
       //Medium Rectangle (H)
-      else if ( _money >= 75 && mouseX > 340 && mouseX < 465 && mouseY > 650 && mouseY < 700 ) {
+      else if ( _money >= 75 && mouseX > 780 && mouseX < 910 && mouseY > 144 && mouseY < 228 ) {
         _money -= 75;
         _holdingObstacle = true;
         _currShape = createShape(RECT, 0, 0, 55, 25);
         _currObstacle = new Obstacle(55, 25, 3);
       }
       //Large Rectangle (H)
-      else if ( _money >= 100 && mouseX > 495 && mouseX < 620 && mouseY > 650 && mouseY < 700 ) {
+      else if ( _money >= 100 && mouseX > 780 && mouseX < 910 && mouseY > 258 && mouseY < 342 ) {
         _money -= 100;
         _holdingObstacle = true;
         _currShape = createShape(RECT, 0, 0, 70, 25);
         _currObstacle = new Obstacle(70, 25, 4);
       }
+      //Bomb1
+      else if ( _money >= 100 && mouseX > 780 && mouseX < 910 && mouseY > 372 && mouseY < 456 ) {
+        _money -= 100;
+        _holdingObstacle = true;
+        _currShape = createShape(ELLIPSE, 0, 0, 30, 30);
+        _currObstacle = new Obstacle(25,25,2,true);
+      }
+      //Bomb2
+      else if ( _money >= 100 && mouseX > 780 && mouseX < 910 && mouseY > 486 && mouseY < 570 ) {
+        _money -= 100;
+        _holdingObstacle = true;
+        _currShape = createShape(ELLIPSE, 0, 0, 30, 30);
+        _currObstacle = new Obstacle(25,25,2,true);
+      }
+      
+      //--------
+      
       //Small Rectangle (V)
-      if ( _money >= 50 && mouseX > 30 && mouseX < 155 && mouseY > 725 && mouseY < 775 ) {
+      if ( _money >= 50 && mouseX > 940 && mouseX < 1070 && mouseY > 30 && mouseY < 114 ) {
         _money -= 50;
         _holdingObstacle = true;
         _currShape = createShape(RECT, 0, 0, 25, 40);
         _currObstacle = new Obstacle(25, 40, 2);
       }
       //Medium Rectangle (V)
-      else if ( _money >= 75 && mouseX > 185 && mouseX < 310 && mouseY > 725 && mouseY < 775 ) {
+      else if ( _money >= 75 && mouseX > 940 && mouseX < 1070 && mouseY > 144 && mouseY < 228 ) {
         _money -= 75;
         _holdingObstacle = true;
         _currShape = createShape(RECT, 0, 0, 25, 55);
         _currObstacle = new Obstacle(25, 55, 3);
       }
       //Large Rectangle (V)
-      else if ( _money >= 100 && mouseX > 340 && mouseX < 465 && mouseY > 725 && mouseY < 775 ) {
+      else if ( _money >= 100 && mouseX > 940 && mouseX < 1070 && mouseY > 258 && mouseY < 342 ) {
         _money -= 100;
         _holdingObstacle = true;
         _currShape = createShape(RECT, 0, 0, 25, 70);
-        _currObstacle = new Obstacle(25, 70, 1);
+        _currObstacle = new Obstacle(25, 70, 4);
       }
+      //Bomb3
+      else if ( _money >= 100 && mouseX > 940 && mouseX < 1070 && mouseY > 372 && mouseY < 456 ) {
+        _money -= 100;
+        _holdingObstacle = true;
+        _currShape = createShape(ELLIPSE, 0, 0, 30, 30);
+        _currObstacle = new Obstacle(25,25,2,true);
+      }
+      //???
+      /*else if ( _money >= 100 && mouseX > 940 && mouseX < 1070 && mouseY > 486 && mouseY < 570 ) {
+        
+      }*/
       
       else {
         _hint="NOT ENOUGH MONEY (or you're not clicking on a store option)";

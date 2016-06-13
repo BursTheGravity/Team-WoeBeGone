@@ -30,7 +30,17 @@ Date: 2016-06-09
 --------------------------------------------------------------
 
 User: Henry Zhang (yhzhan)
-Changes: implemented visual layout and player interface 
+Changes: 
+-Fixed tricky compilation errors
+-Created initial interface and game layout:
+	- Play
+	- Help
+	- Borders
+	- Spawn range
+-Created back-end game system (booleans to run game)
+-Created method for mouse clicks
+-Added storage
+-Added store and currency instances variables for games and visual display
 
 ==============================================================
 
@@ -50,11 +60,19 @@ Changes:
 
 User: Jannie (hyketwig)
 Changes:
-- added pest spawning and pest files
-- added pest features like moving around and eating food
-- added features where things with no HP disappeared
-- edited help page
+- Added pest spawning and pest files
+- Added pest features like moving around and eating food
+- Added features where things with no HP disappeared
+- Edited help page
 
+
+User: Henry Zhang (yhzhan)
+Changes:
+- Fixed obstacle placement range
+- Added and entered text box
+- Adjusted interface
+- Added interfaces/abstract classes, set up class structure for pests and obstacles
+- Fixed errors with score summation
 ==============================================================
 
 Date: 2016-06-12
@@ -86,5 +104,15 @@ Changes:
 - edited help page
 - added bombs
 - other things... check commits
+
+User: Henry Zhang (yhzhan)
+Changes: 
+-Implemented spawn range	
+-Fixed money summation
+-Fixed level advancement error
+-Implemented working collision detection
+-Adjusted game visual layout 
+
+ 
 
 ==============================================================

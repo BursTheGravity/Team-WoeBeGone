@@ -133,14 +133,14 @@ void helpScreen() {
   text("The obstacles that turn blue are walls.",width/2,165);
   text("They stop the pests until they break.",width/2,190);
   text("The obstacles that turn brown and explode are bombs.",width/2,215);
-  text("They kill the bugs in their range.",width/2,240);
+  text("They kill the pests in their range.",width/2,240);
   text("The bigger and more expensive the obstacle, the bigger the range.",width/2,265);
   text("If you kill all the pests before all the food is gone, you win!",width/2,290);
-  text("Bugs will have different sizes and speeds as you progress...",width/2,315);
+  text("Pests will have different sizes and speeds as you progress...",width/2,315);
   text("but you might not be able to tell which is which!",width/2,340);
   text("Some might need more than one click to kill!",width/2,365);
   textSize(30);
-  text("CLICK if you're ready to begin!",width/2,400);
+  text("CLICK if you're ready to begin!",width/2,410);
 }
 
 

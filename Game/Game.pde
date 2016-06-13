@@ -130,10 +130,16 @@ void helpScreen() {
   text("and your food is being eaten by the pests!",width/2,90);
   text("Click on the pests before they get to the white circle (the food).",width/2,115);
   text("Buy obstacles in the shop tab at the bottom to help stop them.",width/2,140);
-  text("If you kill them all before all the food is gone, you win!",width/2,165);
-  text("Bugs will have different sizes and speeds as you progress...",width/2,190);
-  text("but you might not be able to tell which is which!",width/2,215);
-  text("CLICK if you're ready to begin!",width/2,250);
+  text("The obstacles that turn blue are walls.",width/2,165);
+  text("They stop the pests until they break.",width/2,190);
+  text("The obstacles that turn brown and explode are bombs.",width/2,215);
+  text("They kill the bugs in their range.",width/2,240);
+  text("The bigger and more expensive the obstacle, the bigger the range.",width/2,265);
+  text("If you kill all the pests before all the food is gone, you win!",width/2,290);
+  text("Bugs will have different sizes and speeds as you progress...",width/2,315);
+  text("but you might not be able to tell which is which!",width/2,340);
+  textSize(30);
+  text("CLICK if you're ready to begin!",width/2,380);
 }
 
 

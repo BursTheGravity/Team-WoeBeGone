@@ -86,6 +86,8 @@ void draw() {
 
 //return true if obstacle and pest given are touching-- NOT SURE IF THIS WORKS RIGHT 
 boolean isTouching(Obstacle o, Pest p) {
+    if (o.isBomb())
+      return false;
     if (abs(p.getX() - o.getX() - o.getWidth()/2)>o.getWidth()/2+p.getSize()/2){
       return false;
     }
@@ -245,6 +247,8 @@ void gameScreen() {
           Pest x = _pests.get(i);
           if ((x.getSize() + 15) > (sqrt( sq(x.getX() - foo.getX())+sq(x.getY() - foo.getY())))) {
             x.setState(1);
+            _score++;
+            bugsLeft-=1;
           }
         }
         foo.explode();

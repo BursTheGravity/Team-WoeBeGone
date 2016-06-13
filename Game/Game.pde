@@ -138,8 +138,9 @@ void helpScreen() {
   text("If you kill all the pests before all the food is gone, you win!",width/2,290);
   text("Bugs will have different sizes and speeds as you progress...",width/2,315);
   text("but you might not be able to tell which is which!",width/2,340);
+  text("Some might need more than one click to kill!",width/2,365);
   textSize(30);
-  text("CLICK if you're ready to begin!",width/2,380);
+  text("CLICK if you're ready to begin!",width/2,400);
 }
 
 

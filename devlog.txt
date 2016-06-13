@@ -84,6 +84,7 @@ Changes:
 - streamlined code
 - added restart and end screen features
 - edited help page
+- added bombs
 - other things... check commits
 
 ==============================================================

@@ -173,7 +173,7 @@ void gameScreen() {
     text("GAME OVER",_storage.getX(), _storage.getY()); //nOT SURE WHY YOU WIN SOMETIMES BEFORE ALL THE BUGS ARE KILLED
     if (bugsLeft <= 0) {
         text("YOU WIN", _storage.getX(), _storage.getY()+50);
-        if (_level < 5) {
+        if (_level < 6) {
           _nextGame = true;
           text("click for next round", _storage.getX(), _storage.getY()+80);
         }
@@ -385,6 +385,19 @@ void addPests() {
         }
         else if (i % 3 == 0) {
           _pests.add(new Roach());
+        }
+      }
+   }
+   else if (_level == 6) {
+      for (int i = 0; i < 15; i++) {
+        _pests.add(new Mouse());
+        if (i % 2 == 0) {
+          _pests.add(new Beetle());
+          _pests.add(new Termite());
+        }
+        else if (i % 3 == 0) {
+          _pests.add(new Roach());
+          _pests.add(new Ant());
         }
       }
    }
